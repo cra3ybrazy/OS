@@ -36,14 +36,14 @@ int main() {
 	do
 	{
 		system("cls");
-		cout << "Добро пожаловать в меню управления ФС!\n\n";
-		cout << "1 - Вывод списка дисков, существующих в системе\n2 - Вывод информации о диске и свободном месте\n";
-		cout << "3 - Создание и удаление каталогов\n4 - Создание файла\n";
-		cout << "5 - Копирование файла\n6 - Перемещение файла\n";
-		cout << "7 - Атрибуты файла\n8 - Изменение атрибутов файла\n";
-		cout << "9 - Информация о файле\n10 - Изменение даты и времени файла\n";
-		cout << "0 - Выход из программы\n";
-		cout << "\nВведите число: ";
+		cout << "Г„Г®ГЎГ°Г® ГЇГ®Г¦Г Г«Г®ГўГ ГІГј Гў Г¬ГҐГ­Гѕ ГіГЇГ°Г ГўГ«ГҐГ­ГЁГї Г”Г‘!\n\n";
+		cout << "1 - Г‚Г»ГўГ®Г¤ Г±ГЇГЁГ±ГЄГ  Г¤ГЁГ±ГЄГ®Гў, Г±ГіГ№ГҐГ±ГІГўГіГѕГ№ГЁГµ Гў Г±ГЁГ±ГІГҐГ¬ГҐ\n2 - Г‚Г»ГўГ®Г¤ ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГЁ Г® Г¤ГЁГ±ГЄГҐ ГЁ Г±ГўГ®ГЎГ®Г¤Г­Г®Г¬ Г¬ГҐГ±ГІГҐ\n";
+		cout << "3 - Г‘Г®Г§Г¤Г Г­ГЁГҐ ГЁ ГіГ¤Г Г«ГҐГ­ГЁГҐ ГЄГ ГІГ Г«Г®ГЈГ®Гў\n4 - Г‘Г®Г§Г¤Г Г­ГЁГҐ ГґГ Г©Г«Г \n";
+		cout << "5 - ГЉГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐ ГґГ Г©Г«Г \n6 - ГЏГҐГ°ГҐГ¬ГҐГ№ГҐГ­ГЁГҐ ГґГ Г©Г«Г \n";
+		cout << "7 - ГЂГІГ°ГЁГЎГіГІГ» ГґГ Г©Г«Г \n8 - Г€Г§Г¬ГҐГ­ГҐГ­ГЁГҐ Г ГІГ°ГЁГЎГіГІГ®Гў ГґГ Г©Г«Г \n";
+		cout << "9 - Г€Г­ГґГ®Г°Г¬Г Г¶ГЁГї Г® ГґГ Г©Г«ГҐ\n10 - Г€Г§Г¬ГҐГ­ГҐГ­ГЁГҐ Г¤Г ГІГ» ГЁ ГўГ°ГҐГ¬ГҐГ­ГЁ ГґГ Г©Г«Г \n";
+		cout << "0 - Г‚Г»ГµГ®Г¤ ГЁГ§ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»\n";
+		cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г®: ";
 		cin >> pickme;
 
 		switch (pickme)
@@ -110,7 +110,7 @@ int bin(DWORD logic,int driverCount) {
 }
 
 void disks(DWORD trueBuf, int driverCount, char *lpBuffer) {
-	cout << "Диски на устройстве: ";
+	cout << "Г„ГЁГ±ГЄГЁ Г­Г  ГіГ±ГІГ°Г®Г©Г±ГІГўГҐ: ";
 	for (int i = 0; i < driverCount * trueBuf; i++) {
 		printf("%c", lpBuffer[i]);
 	}
@@ -121,17 +121,17 @@ void disksList() {
 	int driverCount = 0;
 
 	DWORD logic = GetLogicalDrives();
-	//cout << "Результат вызова функции GetLogicalDrives: " << logic << "\n";
-	//подсчет количества дисков
+	//cout << "ГђГҐГ§ГіГ«ГјГІГ ГІ ГўГ»Г§Г®ГўГ  ГґГіГ­ГЄГ¶ГЁГЁ GetLogicalDrives: " << logic << "\n";
+	//ГЇГ®Г¤Г±Г·ГҐГІ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ  Г¤ГЁГ±ГЄГ®Гў
 	driverCount = bin(logic, driverCount);
-	//cchBuffer - максимальная длина буфера
-	//MAX_PATH максимальная длина пути, параметр равный 260
+	//cchBuffer - Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г¤Г«ГЁГ­Г  ГЎГіГґГҐГ°Г 
+	//MAX_PATH Г¬Г ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г¤Г«ГЁГ­Г  ГЇГіГІГЁ, ГЇГ Г°Г Г¬ГҐГІГ° Г°Г ГўГ­Г»Г© 260
 	DWORD cchBuffer = MAX_PATH;
-	//сюда будут помещены символьные данные о
-	//корневом каталоге каждого лог. диска системы
+	//Г±ГѕГ¤Г  ГЎГіГ¤ГіГІ ГЇГ®Г¬ГҐГ№ГҐГ­Г» Г±ГЁГ¬ГўГ®Г«ГјГ­Г»ГҐ Г¤Г Г­Г­Г»ГҐ Г®
+	//ГЄГ®Г°Г­ГҐГўГ®Г¬ ГЄГ ГІГ Г«Г®ГЈГҐ ГЄГ Г¦Г¤Г®ГЈГ® Г«Г®ГЈ. Г¤ГЁГ±ГЄГ  Г±ГЁГ±ГІГҐГ¬Г»
 	char lpBuffer[520] = { 0 };
 	DWORD trueBuf = GetLogicalDriveStrings(cchBuffer, (LPWSTR)lpBuffer);
-	//cout << "Результат вызова функции GetLogicalDriveStrings: " << trueBuf << "\n";
+	//cout << "ГђГҐГ§ГіГ«ГјГІГ ГІ ГўГ»Г§Г®ГўГ  ГґГіГ­ГЄГ¶ГЁГЁ GetLogicalDriveStrings: " << trueBuf << "\n";
 	disks(trueBuf, driverCount, lpBuffer);
 }
 
@@ -139,12 +139,12 @@ void diskInfo() {
 	char driverName;
 	boolean flag;
 	disksList();
-	cout << "Выберите диск, информацию о котором хотите получить. (Пример ввода: D)\n";
+	cout << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г¤ГЁГ±ГЄ, ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ Г® ГЄГ®ГІГ®Г°Г®Г¬ ГµГ®ГІГЁГІГҐ ГЇГ®Г«ГіГ·ГЁГІГј. (ГЏГ°ГЁГ¬ГҐГ° ГўГўГ®Г¤Г : D)\n";
 	cin >> driverName;
 	flag = iHopeDiskExists(driverName);
 	if (flag) {
-		//преобразование введенных данных
-		//для вызова функции GetDriveType()
+		//ГЇГ°ГҐГ®ГЎГ°Г Г§Г®ГўГ Г­ГЁГҐ ГўГўГҐГ¤ГҐГ­Г­Г»Гµ Г¤Г Г­Г­Г»Гµ
+		//Г¤Г«Гї ГўГ»Г§Г®ГўГ  ГґГіГ­ГЄГ¶ГЁГЁ GetDriveType()
 		char disk[4] = {' ', ':', '\\'};
 		UINT id;
 		disk[0] = driverName;
@@ -153,75 +153,75 @@ void diskInfo() {
 		id = GetDriveTypeA(disk);
 		switch (id) {
 		case 0:
-			cout << "Тип диска " << disk << " неизвестен!\n";
+			cout << "Г’ГЁГЇ Г¤ГЁГ±ГЄГ  " << disk << " Г­ГҐГЁГ§ГўГҐГ±ГІГҐГ­!\n";
 			break;
 		case 1:
-			cout << "Не удалось найти диск " << disk <<" !\n";
+			cout << "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г­Г Г©ГІГЁ Г¤ГЁГ±ГЄ " << disk <<" !\n";
 			break;
 		case DRIVE_REMOVABLE:
-			cout << "Диск " << disk <<" гибкий.\n";
+			cout << "Г„ГЁГ±ГЄ " << disk <<" ГЈГЁГЎГЄГЁГ©.\n";
 			break;
 		case DRIVE_FIXED:
-			cout << "Диск " << disk << " жесткий.\n";
+			cout << "Г„ГЁГ±ГЄ " << disk << " Г¦ГҐГ±ГІГЄГЁГ©.\n";
 			break;
 		case DRIVE_REMOTE:
-			cout << "Диск " << disk << " сетевой.\n";
+			cout << "Г„ГЁГ±ГЄ " << disk << " Г±ГҐГІГҐГўГ®Г©.\n";
 			break;
 		case DRIVE_CDROM:
-			cout << disk << " компакт диск.\n";
+			cout << disk << " ГЄГ®Г¬ГЇГ ГЄГІ Г¤ГЁГ±ГЄ.\n";
 			break;
 		case DRIVE_RAMDISK:
-			cout << disk << " RAM диск.\n";
+			cout << disk << " RAM Г¤ГЁГ±ГЄ.\n";
 			break;
 		}
 
-		//получение подробной инфо о томе
+		//ГЇГ®Г«ГіГ·ГҐГ­ГЁГҐ ГЇГ®Г¤Г°Г®ГЎГ­Г®Г© ГЁГ­ГґГ® Г® ГІГ®Г¬ГҐ
 		
-		//если disk NULL
-		//используется корень текущего каталога
+		//ГҐГ±Г«ГЁ disk NULL
+		//ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї ГЄГ®Г°ГҐГ­Гј ГІГҐГЄГіГ№ГҐГЈГ® ГЄГ ГІГ Г«Г®ГЈГ 
 
-		//указатель на буфер, получивший название тома
+		//ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЎГіГґГҐГ°, ГЇГ®Г«ГіГ·ГЁГўГёГЁГ© Г­Г Г§ГўГ Г­ГЁГҐ ГІГ®Г¬Г 
 		char VNameBuffer[MAX_PATH];
 		
 		char SysNameBuffer[MAX_PATH];
-		//серийный номер диска
+		//Г±ГҐГ°ГЁГ©Г­Г»Г© Г­Г®Г¬ГҐГ° Г¤ГЁГ±ГЄГ 
 		DWORD VSNumber;
 		DWORD MCLength;
-		//указатель на переменную, которая получает флаги, связанные с указанной файловой системой
+		//ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЇГҐГ°ГҐГ¬ГҐГ­Г­ГіГѕ, ГЄГ®ГІГ®Г°Г Гї ГЇГ®Г«ГіГ·Г ГҐГІ ГґГ«Г ГЈГЁ, Г±ГўГїГ§Г Г­Г­Г»ГҐ Г± ГіГЄГ Г§Г Г­Г­Г®Г© ГґГ Г©Г«Г®ГўГ®Г© Г±ГЁГ±ГІГҐГ¬Г®Г©
 		DWORD FileSF;
 
 		if (GetVolumeInformationA(disk, VNameBuffer, sizeof(VNameBuffer),
 			&VSNumber, &MCLength, &FileSF, SysNameBuffer, sizeof(SysNameBuffer)))
 		{
-			cout << "Имя тома:  " << VNameBuffer << "\n";
-			cout << "Название файловой структуры: " << SysNameBuffer << "\n";
-			cout << "Серийный номер диска: " << VSNumber << "\n";
-			cout << "Максимальная длина имени файла: " << MCLength << "\n";
+			cout << "Г€Г¬Гї ГІГ®Г¬Г :  " << VNameBuffer << "\n";
+			cout << "ГЌГ Г§ГўГ Г­ГЁГҐ ГґГ Г©Г«Г®ГўГ®Г© Г±ГІГ°ГіГЄГІГіГ°Г»: " << SysNameBuffer << "\n";
+			cout << "Г‘ГҐГ°ГЁГ©Г­Г»Г© Г­Г®Г¬ГҐГ° Г¤ГЁГ±ГЄГ : " << VSNumber << "\n";
+			cout << "ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г¤Г«ГЁГ­Г  ГЁГ¬ГҐГ­ГЁ ГґГ Г©Г«Г : " << MCLength << "\n";
 			if (FileSF & FS_CASE_IS_PRESERVED)
-				cout << "При записи на диск сохраняется регистр букв в имени файла\n";
+				cout << "ГЏГ°ГЁ Г§Г ГЇГЁГ±ГЁ Г­Г  Г¤ГЁГ±ГЄ Г±Г®ГµГ°Г Г­ГїГҐГІГ±Гї Г°ГҐГЈГЁГ±ГІГ° ГЎГіГЄГў Гў ГЁГ¬ГҐГ­ГЁ ГґГ Г©Г«Г \n";
 			if (FileSF & FS_CASE_SENSITIVE)
-				cout << "ФC поддерживает поиск файлов с учетом регистра букв в именах\n";
+				cout << "Г”C ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ ГЇГ®ГЁГ±ГЄ ГґГ Г©Г«Г®Гў Г± ГіГ·ГҐГІГ®Г¬ Г°ГҐГЈГЁГ±ГІГ°Г  ГЎГіГЄГў Гў ГЁГ¬ГҐГ­Г Гµ\n";
 			if (FileSF & FS_UNICODE_STORED_ON_DISK)
-				cout << "ФC поддерживает хранение на диске имен файлов в UNICODE\n";
+				cout << "Г”C ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ ГµГ°Г Г­ГҐГ­ГЁГҐ Г­Г  Г¤ГЁГ±ГЄГҐ ГЁГ¬ГҐГ­ ГґГ Г©Г«Г®Гў Гў UNICODE\n";
 			if (FileSF & FILE_PERSISTENT_ACLS)
-				cout << "ФC способна оперировать с ACL\n";
+				cout << "Г”C Г±ГЇГ®Г±Г®ГЎГ­Г  Г®ГЇГҐГ°ГЁГ°Г®ГўГ ГІГј Г± ACL\n";
 			if (FileSF & FILE_FILE_COMPRESSION)
-				cout << "ФС поддерживает сжатие файлов\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ Г±Г¦Г ГІГЁГҐ ГґГ Г©Г«Г®Гў\n";
 			if (FileSF & FILE_NAMED_STREAMS)
-				cout << "ФС поддерживает именованные потоки\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ ГЁГ¬ГҐГ­Г®ГўГ Г­Г­Г»ГҐ ГЇГ®ГІГ®ГЄГЁ\n";
 			if (FileSF & FILE_SUPPORTS_ENCRYPTION)
-				cout << "ФС поддерживает Encrypted File System (EPS)\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ Encrypted File System (EPS)\n";
 			if (FileSF & FILE_SUPPORTS_OBJECT_IDS)
-				cout << "ФС поддерживает идентификаторы объектов\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г°Г» Г®ГЎГєГҐГЄГІГ®Гў\n";
 			if (FileSF & FILE_SUPPORTS_REPARSE_POINTS)
-				cout << "ФС поддерживает точки повторного разбора\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ ГІГ®Г·ГЄГЁ ГЇГ®ГўГІГ®Г°Г­Г®ГЈГ® Г°Г Г§ГЎГ®Г°Г \n";
 			if (FileSF & FILE_SUPPORTS_SPARSE_FILES)
-				cout << "ФС поддерживает разреженные файлы\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ Г°Г Г§Г°ГҐГ¦ГҐГ­Г­Г»ГҐ ГґГ Г©Г«Г»\n";
 			if (FileSF & FILE_VOLUME_QUOTAS)
-				cout << "ФС поддерживает VOLUME QUOTAS\n";
+				cout << "Г”Г‘ ГЇГ®Г¤Г¤ГҐГ°Г¦ГЁГўГ ГҐГІ VOLUME QUOTAS\n";
 		}
 		else
-			cout << "Не удалось получить информацию о диске\n";
+			cout << "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј ГЇГ®Г«ГіГ·ГЁГІГј ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ Г® Г¤ГЁГ±ГЄГҐ\n";
 		DWORD SectorsPerCluster;
 		DWORD BytesPerSector;
 		DWORD NumberOfFreeClusters;
@@ -229,19 +229,19 @@ void diskInfo() {
 
 		if (GetDiskFreeSpaceA(disk, &SectorsPerCluster, &BytesPerSector, &NumberOfFreeClusters, &TotalNumberOfClusters))
 		{
-			cout << "Секторов в кластере: " << SectorsPerCluster << "\n";
-			cout << "Байт в секторе: " << BytesPerSector << "\n";
-			cout << "Свободных кластеров на диске: " << NumberOfFreeClusters << "\n";
-			cout << "Кластеров на диске: " << TotalNumberOfClusters << "\n";
-			//cout << "Общий объём места на диске: " << double(SectorsPerCluster) * double(BytesPerSector) * double(TotalNumberOfClusters) / 1024 / 1024 / 1024 << " Гб" << endl;
-			//cout << "Количество свободного места на диске: \n";
-			//cout << double(SectorsPerCluster) * double(BytesPerSector) * double(NumberOfFreeClusters) / 1024 / 1024 / 1024 << " Гб" << endl;
+			cout << "Г‘ГҐГЄГІГ®Г°Г®Гў Гў ГЄГ«Г Г±ГІГҐГ°ГҐ: " << SectorsPerCluster << "\n";
+			cout << "ГЃГ Г©ГІ Гў Г±ГҐГЄГІГ®Г°ГҐ: " << BytesPerSector << "\n";
+			cout << "Г‘ГўГ®ГЎГ®Г¤Г­Г»Гµ ГЄГ«Г Г±ГІГҐГ°Г®Гў Г­Г  Г¤ГЁГ±ГЄГҐ: " << NumberOfFreeClusters << "\n";
+			cout << "ГЉГ«Г Г±ГІГҐГ°Г®Гў Г­Г  Г¤ГЁГ±ГЄГҐ: " << TotalNumberOfClusters << "\n";
+			//cout << "ГЋГЎГ№ГЁГ© Г®ГЎГєВёГ¬ Г¬ГҐГ±ГІГ  Г­Г  Г¤ГЁГ±ГЄГҐ: " << double(SectorsPerCluster) * double(BytesPerSector) * double(TotalNumberOfClusters) / 1024 / 1024 / 1024 << " ГѓГЎ" << endl;
+			//cout << "ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±ГўГ®ГЎГ®Г¤Г­Г®ГЈГ® Г¬ГҐГ±ГІГ  Г­Г  Г¤ГЁГ±ГЄГҐ: \n";
+			//cout << double(SectorsPerCluster) * double(BytesPerSector) * double(NumberOfFreeClusters) / 1024 / 1024 / 1024 << " ГѓГЎ" << endl;
 		}
 		else
-			cout << "Не удалось получить информацию о свободном пространстве на диске\n";
+			cout << "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј ГЇГ®Г«ГіГ·ГЁГІГј ГЁГ­ГґГ®Г°Г¬Г Г¶ГЁГѕ Г® Г±ГўГ®ГЎГ®Г¤Г­Г®Г¬ ГЇГ°Г®Г±ГІГ°Г Г­Г±ГІГўГҐ Г­Г  Г¤ГЁГ±ГЄГҐ\n";
 	}
 	else {
-		cout << "Диск не существует!\n";
+		cout << "Г„ГЁГ±ГЄ Г­ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ!\n";
 	}
 }
 
@@ -254,7 +254,7 @@ boolean iHopeDiskExists(char driverName) {
 	char lpBuffer[520] = { 0 };
 	DWORD trueBuf = GetLogicalDriveStrings(cchBuffer, (LPWSTR)lpBuffer);
 
-	//проверка введенного диска на существование в системе
+	//ГЇГ°Г®ГўГҐГ°ГЄГ  ГўГўГҐГ¤ГҐГ­Г­Г®ГЈГ® Г¤ГЁГ±ГЄГ  Г­Г  Г±ГіГ№ГҐГ±ГІГўГ®ГўГ Г­ГЁГҐ Гў Г±ГЁГ±ГІГҐГ¬ГҐ
 	if (driverName >= 65 && driverName <= 90) {
 		for (int i = 0; i < driverCount * trueBuf; i++) {
 			if (lpBuffer[i] == driverName) {
@@ -270,45 +270,45 @@ void copyFile() {
 	string pathToFile, pathToNewFile;
 
 	system("cls");
-	cout << "Укажите путь к копируемому файлу: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГЄ ГЄГ®ГЇГЁГ°ГіГҐГ¬Г®Г¬Гі ГґГ Г©Г«Гі: ";
 	pathToFile = validPath();
-	cout << "Укажите путь и новое имя для скопированного файла: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГЁ Г­Г®ГўГ®ГҐ ГЁГ¬Гї Г¤Г«Гї Г±ГЄГ®ГЇГЁГ°Г®ГўГ Г­Г­Г®ГЈГ® ГґГ Г©Г«Г : ";
 	cin >> pathToNewFile;
 	if (CopyFileA(pathToFile.c_str(), pathToNewFile.c_str(), TRUE)) {
-		cout << "Файл успешно скопирован в " << pathToNewFile << "\n";
+		cout << "Г”Г Г©Г« ГіГ±ГЇГҐГёГ­Г® Г±ГЄГ®ГЇГЁГ°Г®ГўГ Г­ Гў " << pathToNewFile << "\n";
 	}
-	else cout << "Копирование не удалось.\nВозможно, скопированный файл по указанному пути уже существует..\n";
+	else cout << "ГЉГ®ГЇГЁГ°Г®ГўГ Г­ГЁГҐ Г­ГҐ ГіГ¤Г Г«Г®Г±Гј.\nГ‚Г®Г§Г¬Г®Г¦Г­Г®, Г±ГЄГ®ГЇГЁГ°Г®ГўГ Г­Г­Г»Г© ГґГ Г©Г« ГЇГ® ГіГЄГ Г§Г Г­Г­Г®Г¬Гі ГЇГіГІГЁ ГіГ¦ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ..\n";
 };
 
 void moveFile() {
 	string pathToFile, newLocation;
 
 	system("cls");
-	cout << "Укажите путь к файлу, который желаете переместить: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі, ГЄГ®ГІГ®Г°Г»Г© Г¦ГҐГ«Г ГҐГІГҐ ГЇГҐГ°ГҐГ¬ГҐГ±ГІГЁГІГј: ";
 	pathToFile = validPath();
-	cout << "Укажите новый путь к файлу, с указанием файла: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ Г­Г®ГўГ»Г© ГЇГіГІГј ГЄ ГґГ Г©Г«Гі, Г± ГіГЄГ Г§Г Г­ГЁГҐГ¬ ГґГ Г©Г«Г : ";
 	cin >> newLocation;
-	//MOVEFILE_COPY_ALLOWED позволяет перенести файл в другой том
-	//флаг MOVEFILE_WRITE_THROUGH призывает функцию не возвращать значение пока файл не будет
-	//перемещен на диск
+	//MOVEFILE_COPY_ALLOWED ГЇГ®Г§ГўГ®Г«ГїГҐГІ ГЇГҐГ°ГҐГ­ГҐГ±ГІГЁ ГґГ Г©Г« Гў Г¤Г°ГіГЈГ®Г© ГІГ®Г¬
+	//ГґГ«Г ГЈ MOVEFILE_WRITE_THROUGH ГЇГ°ГЁГ§Г»ГўГ ГҐГІ ГґГіГ­ГЄГ¶ГЁГѕ Г­ГҐ ГўГ®Г§ГўГ°Г Г№Г ГІГј Г§Г­Г Г·ГҐГ­ГЁГҐ ГЇГ®ГЄГ  ГґГ Г©Г« Г­ГҐ ГЎГіГ¤ГҐГІ
+	//ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­ Г­Г  Г¤ГЁГ±ГЄ
 	if (MoveFileExA(pathToFile.c_str(), newLocation.c_str(), MOVEFILE_COPY_ALLOWED | MOVEFILE_WRITE_THROUGH))
-		cout << "Файл успешно перемещен.\n";
-	else cout << "Переместить файл не удалось. Возможно, по указнному пути уже существует файл.";
+		cout << "Г”Г Г©Г« ГіГ±ГЇГҐГёГ­Г® ГЇГҐГ°ГҐГ¬ГҐГ№ГҐГ­.\n";
+	else cout << "ГЏГҐГ°ГҐГ¬ГҐГ±ГІГЁГІГј ГґГ Г©Г« Г­ГҐ ГіГ¤Г Г«Г®Г±Гј. Г‚Г®Г§Г¬Г®Г¦Г­Г®, ГЇГ® ГіГЄГ Г§Г­Г­Г®Г¬Гі ГЇГіГІГЁ ГіГ¦ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ ГґГ Г©Г«.";
 };
 
 void crFile() {
 	string pathCr;
 	system("cls");
-	cout << "Укажите путь вместе с именем файла для его создания: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГўГ¬ГҐГ±ГІГҐ Г± ГЁГ¬ГҐГ­ГҐГ¬ ГґГ Г©Г«Г  Г¤Г«Гї ГҐГЈГ® Г±Г®Г§Г¤Г Г­ГЁГї: ";
 	cin >> pathCr;
-	//1 параметр - указатель на имя файла, 2 - запрос доступа на чтение и запись
-	//3 - разрешение на совместное использование файла несколькими процессами
-	//6 - файл всегда создается или пересоздается 7 - атрибуты создания файла (readonly)
-	//в случае успеха вернется дескриптор файла 
-	//ошибка - вернется значение INVALID_HANDLE_VALUE
+	//1 ГЇГ Г°Г Г¬ГҐГІГ° - ГіГЄГ Г§Г ГІГҐГ«Гј Г­Г  ГЁГ¬Гї ГґГ Г©Г«Г , 2 - Г§Г ГЇГ°Г®Г± Г¤Г®Г±ГІГіГЇГ  Г­Г  Г·ГІГҐГ­ГЁГҐ ГЁ Г§Г ГЇГЁГ±Гј
+	//3 - Г°Г Г§Г°ГҐГёГҐГ­ГЁГҐ Г­Г  Г±Г®ГўГ¬ГҐГ±ГІГ­Г®ГҐ ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГҐ ГґГ Г©Г«Г  Г­ГҐГ±ГЄГ®Г«ГјГЄГЁГ¬ГЁ ГЇГ°Г®Г¶ГҐГ±Г±Г Г¬ГЁ
+	//6 - ГґГ Г©Г« ГўГ±ГҐГЈГ¤Г  Г±Г®Г§Г¤Г ГҐГІГ±Гї ГЁГ«ГЁ ГЇГҐГ°ГҐГ±Г®Г§Г¤Г ГҐГІГ±Гї 7 - Г ГІГ°ГЁГЎГіГІГ» Г±Г®Г§Г¤Г Г­ГЁГї ГґГ Г©Г«Г  (readonly)
+	//Гў Г±Г«ГіГ·Г ГҐ ГіГ±ГЇГҐГµГ  ГўГҐГ°Г­ГҐГІГ±Гї Г¤ГҐГ±ГЄГ°ГЁГЇГІГ®Г° ГґГ Г©Г«Г  
+	//Г®ГёГЁГЎГЄГ  - ГўГҐГ°Г­ГҐГІГ±Гї Г§Г­Г Г·ГҐГ­ГЁГҐ INVALID_HANDLE_VALUE
 	CreateFileA(pathCr.c_str(), GENERIC_READ | GENERIC_WRITE, FILE_SHARE_DELETE,
 		NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	cout << "Файл создан!" << "\n";
+	cout << "Г”Г Г©Г« Г±Г®Г§Г¤Г Г­!" << "\n";
 }
 
 void crDelDirectory() {
@@ -316,8 +316,8 @@ void crDelDirectory() {
 
 	do {
 		system("cls");
-		cout << "1 - Создание каталога\n2 - Удаление каталога\n0 - Возвращение в меню\n";
-		cout << "Введите число: ";
+		cout << "1 - Г‘Г®Г§Г¤Г Г­ГЁГҐ ГЄГ ГІГ Г«Г®ГЈГ \n2 - Г“Г¤Г Г«ГҐГ­ГЁГҐ ГЄГ ГІГ Г«Г®ГЈГ \n0 - Г‚Г®Г§ГўГ°Г Г№ГҐГ­ГЁГҐ Гў Г¬ГҐГ­Гѕ\n";
+		cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«Г®: ";
 		cin >> pickme;
 		switch (pickme)
 		{
@@ -325,16 +325,16 @@ void crDelDirectory() {
 			string dirName;
 			string pathCr;
 			system("cls");
-			cout << "Введите путь для создания каталога: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГіГІГј Г¤Г«Гї Г±Г®Г§Г¤Г Г­ГЁГї ГЄГ ГІГ Г«Г®ГЈГ : ";
 			pathCr = validPath();
-			cout << "Введите название каталога: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г­Г Г§ГўГ Г­ГЁГҐ ГЄГ ГІГ Г«Г®ГЈГ : ";
 			cin >> dirName;
 			pathCr += dirName;
 			if (CreateDirectoryA(pathCr.c_str(), NULL)) {
-				cout << "Каталог " << pathCr << " создан!\n";
+				cout << "ГЉГ ГІГ Г«Г®ГЈ " << pathCr << " Г±Г®Г§Г¤Г Г­!\n";
 			}
 			else {
-				cout << "Каталог " << pathCr << " уже существует!\n";
+				cout << "ГЉГ ГІГ Г«Г®ГЈ " << pathCr << " ГіГ¦ГҐ Г±ГіГ№ГҐГ±ГІГўГіГҐГІ!\n";
 			}
 			system("pause");
 			break;
@@ -342,13 +342,13 @@ void crDelDirectory() {
 		case '2': {
 			string pathDel;
 			system("cls");
-			cout << "Введите путь к каталогу: ";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГіГІГј ГЄ ГЄГ ГІГ Г«Г®ГЈГі: ";
 			pathDel = validPath();
 			pathDel += "\\\\";
-			//при успешном выполнении возвр значение != 0
-			//удаление возможно только для пустых директорий
-			if (RemoveDirectoryA(pathDel.c_str())) cout << "\nКаталог удалён!\n";
-			else cout << "\nКаталог не удалось удалить...\n";
+			//ГЇГ°ГЁ ГіГ±ГЇГҐГёГ­Г®Г¬ ГўГ»ГЇГ®Г«Г­ГҐГ­ГЁГЁ ГўГ®Г§ГўГ° Г§Г­Г Г·ГҐГ­ГЁГҐ != 0
+			//ГіГ¤Г Г«ГҐГ­ГЁГҐ ГўГ®Г§Г¬Г®Г¦Г­Г® ГІГ®Г«ГјГЄГ® Г¤Г«Гї ГЇГіГ±ГІГ»Гµ Г¤ГЁГ°ГҐГЄГІГ®Г°ГЁГ©
+			if (RemoveDirectoryA(pathDel.c_str())) cout << "\nГЉГ ГІГ Г«Г®ГЈ ГіГ¤Г Г«ВёГ­!\n";
+			else cout << "\nГЉГ ГІГ Г«Г®ГЈ Г­ГҐ ГіГ¤Г Г«Г®Г±Гј ГіГ¤Г Г«ГЁГІГј...\n";
 			system("pause");
 			break;
 		}
@@ -359,28 +359,28 @@ void crDelDirectory() {
 void fileAttribute() {
 	string path;
 	DWORD attributeAnalysis;
-	cout << "Укажите путь к файлу: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі: ";
 	cin >> path;
 	attributeAnalysis = GetFileAttributesA(path.c_str());
 	if (attributeAnalysis != INVALID_FILE_ATTRIBUTES) {
 		if (attributeAnalysis & FILE_ATTRIBUTE_NORMAL)
-			cout << "Файл не имеет других установленных атрибутов\n";
+			cout << "Г”Г Г©Г« Г­ГҐ ГЁГ¬ГҐГҐГІ Г¤Г°ГіГЈГЁГµ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г­Г»Гµ Г ГІГ°ГЁГЎГіГІГ®Гў\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_COMPRESSED)
-			cout << "Файл сжатый\n";
+			cout << "Г”Г Г©Г« Г±Г¦Г ГІГ»Г©\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_DIRECTORY)
-			cout << "Файл идентифицирован как каталог\n";
+			cout << "Г”Г Г©Г« ГЁГ¤ГҐГ­ГІГЁГґГЁГ¶ГЁГ°Г®ГўГ Г­ ГЄГ ГЄ ГЄГ ГІГ Г«Г®ГЈ\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_ENCRYPTED)
-			cout << "Файл зашифрован\n";
+			cout << "Г”Г Г©Г« Г§Г ГёГЁГґГ°Г®ГўГ Г­\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_HIDDEN)
-			cout << "Файл скрыт\n";
+			cout << "Г”Г Г©Г« Г±ГЄГ°Г»ГІ\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_READONLY)
-			cout << "Файл только для чтения\n";
+			cout << "Г”Г Г©Г« ГІГ®Г«ГјГЄГ® Г¤Г«Гї Г·ГІГҐГ­ГЁГї\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_SPARSE_FILE)
-			cout << "Файл - разреженный\n";
+			cout << "Г”Г Г©Г« - Г°Г Г§Г°ГҐГ¦ГҐГ­Г­Г»Г©\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_SYSTEM)
-			cout << "Файл частично или полностью используется операционной системой.\n";
+			cout << "Г”Г Г©Г« Г·Г Г±ГІГЁГ·Г­Г® ГЁГ«ГЁ ГЇГ®Г«Г­Г®Г±ГІГјГѕ ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г®Г© Г±ГЁГ±ГІГҐГ¬Г®Г©.\n";
 		if (attributeAnalysis & FILE_ATTRIBUTE_TEMPORARY)
-			cout << "Файл используется для временного хранения\n";
+			cout << "Г”Г Г©Г« ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г¤Г«Гї ГўГ°ГҐГ¬ГҐГ­Г­Г®ГЈГ® ГµГ°Г Г­ГҐГ­ГЁГї\n";
 	}
 };
 
@@ -393,54 +393,54 @@ void setAttribute() {
 	LPDWORD BytesReturned = new DWORD;
 	DWORD fAttr = 0;
 	DWORD fA;
-	cout << "Укажите путь к файлу атрибуты которого хотите изменить: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі Г ГІГ°ГЁГЎГіГІГ» ГЄГ®ГІГ®Г°Г®ГЈГ® ГµГ®ГІГЁГІГҐ ГЁГ§Г¬ГҐГ­ГЁГІГј: ";
 	path = validPath();
-	cout << "\nУстановить атрибут 'зашифрован'\n+ - Да\nЛюбой другой символ - нет\n";
+	cout << "\nГ“Г±ГІГ Г­Г®ГўГЁГІГј Г ГІГ°ГЁГЎГіГІ 'Г§Г ГёГЁГґГ°Г®ГўГ Г­'\n+ - Г„Г \nГ‹ГѕГЎГ®Г© Г¤Г°ГіГЈГ®Г© Г±ГЁГ¬ГўГ®Г« - Г­ГҐГІ\n";
 	cin >> flag;
 	if (flag == '+')
 	{
 		fA = GetFileAttributesA(path.c_str());
 		if (fA & FILE_ATTRIBUTE_COMPRESSED)
-			cout << "\nФайл сжат, зашифровать его невозможно..\n";
+			cout << "\nГ”Г Г©Г« Г±Г¦Г ГІ, Г§Г ГёГЁГґГ°Г®ГўГ ГІГј ГҐГЈГ® Г­ГҐГўГ®Г§Г¬Г®Г¦Г­Г®..\n";
 		else
 		{
-			//шифрование файла или каталога
+			//ГёГЁГґГ°Г®ГўГ Г­ГЁГҐ ГґГ Г©Г«Г  ГЁГ«ГЁ ГЄГ ГІГ Г«Г®ГЈГ 
 			if (EncryptFileA(path.c_str()))
-				cout << "\nШифрование файла завершено.\n";
+				cout << "\nГГЁГґГ°Г®ГўГ Г­ГЁГҐ ГґГ Г©Г«Г  Г§Г ГўГҐГ°ГёГҐГ­Г®.\n";
 			else
-				cout << "\nНе удалось зашифровать файл!\n";
+				cout << "\nГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г§Г ГёГЁГґГ°Г®ГўГ ГІГј ГґГ Г©Г«!\n";
 		}
 	}
 	else
 	{
 		fA = GetFileAttributesA(path.c_str());
 		if (fA & FILE_ATTRIBUTE_ENCRYPTED)
-			//расшифровка файла или каталога
+			//Г°Г Г±ГёГЁГґГ°Г®ГўГЄГ  ГґГ Г©Г«Г  ГЁГ«ГЁ ГЄГ ГІГ Г«Г®ГЈГ 
 			DecryptFileA(path.c_str(), fA);
 	}
-	cout << "\nУстановить атрибут 'скрытый'?\n+ - Да\n";
+	cout << "\nГ“Г±ГІГ Г­Г®ГўГЁГІГј Г ГІГ°ГЁГЎГіГІ 'Г±ГЄГ°Г»ГІГ»Г©'?\n+ - Г„Г \n";
 	cin >> flag;
 	if (flag == '+')
 		fAttr |= FILE_ATTRIBUTE_HIDDEN;
-	cout << "\nУстановить атрибут 'только для чтения'?\n+ - Да\n";
+	cout << "\nГ“Г±ГІГ Г­Г®ГўГЁГІГј Г ГІГ°ГЁГЎГіГІ 'ГІГ®Г«ГјГЄГ® Г¤Г«Гї Г·ГІГҐГ­ГЁГї'?\n+ - Г„Г \n";
 	cin >> flag;
 	if (flag == '1') {
 		SetFileAttributesA(path.c_str(), fAttr);
 		fAttr |= FILE_ATTRIBUTE_READONLY;
 	}
-	cout << "\nУстановить атрибут 'системный файл'?\n+ - Да\n";
+	cout << "\nГ“Г±ГІГ Г­Г®ГўГЁГІГј Г ГІГ°ГЁГЎГіГІ 'Г±ГЁГ±ГІГҐГ¬Г­Г»Г© ГґГ Г©Г«'?\n+ - Г„Г \n";
 	cin >> flag;
 	if (flag == '1')
 		fAttr |= FILE_ATTRIBUTE_SYSTEM;
-	cout << "\nУстановить атрибут 'для временного хранения'?\n+ - Да\n";
+	cout << "\nГ“Г±ГІГ Г­Г®ГўГЁГІГј Г ГІГ°ГЁГЎГіГІ 'Г¤Г«Гї ГўГ°ГҐГ¬ГҐГ­Г­Г®ГЈГ® ГµГ°Г Г­ГҐГ­ГЁГї'?\n+ - Г„Г \n";
 	cin >> flag;
 	if (flag == '1')
 		fAttr |= FILE_ATTRIBUTE_TEMPORARY;
-	//установка выбранных атрибутов
-	//при успешном завершении функция
-	//возвращает ненулевое значение
+	//ГіГ±ГІГ Г­Г®ГўГЄГ  ГўГ»ГЎГ°Г Г­Г­Г»Гµ Г ГІГ°ГЁГЎГіГІГ®Гў
+	//ГЇГ°ГЁ ГіГ±ГЇГҐГёГ­Г®Г¬ Г§Г ГўГҐГ°ГёГҐГ­ГЁГЁ ГґГіГ­ГЄГ¶ГЁГї
+	//ГўГ®Г§ГўГ°Г Г№Г ГҐГІ Г­ГҐГ­ГіГ«ГҐГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ
 	if (SetFileAttributesA(path.c_str(), fAttr))
-		cout << "\nАтрибуты для файла успешно установлены.\n";
+		cout << "\nГЂГІГ°ГЁГЎГіГІГ» Г¤Г«Гї ГґГ Г©Г«Г  ГіГ±ГЇГҐГёГ­Г® ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г».\n";
 };
 
 void fileInfo() {
@@ -448,42 +448,42 @@ void fileInfo() {
 	BY_HANDLE_FILE_INFORMATION FileInfo;
 	SYSTEMTIME sTime, lTime;
 	string path;
-	cout << "Укажите путь к файлу: ";
+	cout << "Г“ГЄГ Г¦ГЁГІГҐ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі: ";
 	path = validPath();
 	fHandle = CreateFileA(path.c_str(), GENERIC_READ, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	GetFileInformationByHandle(fHandle, &FileInfo);
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_NORMAL)
-		cout << "Файл не имеет других установленных атрибутов\n";
+		cout << "Г”Г Г©Г« Г­ГҐ ГЁГ¬ГҐГҐГІ Г¤Г°ГіГЈГЁГµ ГіГ±ГІГ Г­Г®ГўГ«ГҐГ­Г­Г»Гµ Г ГІГ°ГЁГЎГіГІГ®Гў\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_COMPRESSED)
-		cout << "Файл сжатый\n";
+		cout << "Г”Г Г©Г« Г±Г¦Г ГІГ»Г©\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
-		cout << "Файл идентифицирован как каталог\n";
+		cout << "Г”Г Г©Г« ГЁГ¤ГҐГ­ГІГЁГґГЁГ¶ГЁГ°Г®ГўГ Г­ ГЄГ ГЄ ГЄГ ГІГ Г«Г®ГЈ\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_ENCRYPTED)
-		cout << "Файл зашифрован\n";
+		cout << "Г”Г Г©Г« Г§Г ГёГЁГґГ°Г®ГўГ Г­\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_HIDDEN)
-		cout << "Файл скрыт\n";
+		cout << "Г”Г Г©Г« Г±ГЄГ°Г»ГІ\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_READONLY)
-		cout << "Файл только для чтения\n";
+		cout << "Г”Г Г©Г« ГІГ®Г«ГјГЄГ® Г¤Г«Гї Г·ГІГҐГ­ГЁГї\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_SPARSE_FILE)
-		cout << "Файл - разреженный\n";
+		cout << "Г”Г Г©Г« - Г°Г Г§Г°ГҐГ¦ГҐГ­Г­Г»Г©\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_SYSTEM)
-		cout << "Файл частично или исключительно используется операционной системой (системный файл)\n";
+		cout << "Г”Г Г©Г« Г·Г Г±ГІГЁГ·Г­Г® ГЁГ«ГЁ ГЁГ±ГЄГ«ГѕГ·ГЁГІГҐГ«ГјГ­Г® ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г®ГЇГҐГ°Г Г¶ГЁГ®Г­Г­Г®Г© Г±ГЁГ±ГІГҐГ¬Г®Г© (Г±ГЁГ±ГІГҐГ¬Г­Г»Г© ГґГ Г©Г«)\n";
 	if (FileInfo.dwFileAttributes & FILE_ATTRIBUTE_TEMPORARY)
-		cout << "Файл используется для временного хранения\n";
+		cout << "Г”Г Г©Г« ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГІГ±Гї Г¤Г«Гї ГўГ°ГҐГ¬ГҐГ­Г­Г®ГЈГ® ГµГ°Г Г­ГҐГ­ГЁГї\n";
 	FileTimeToSystemTime(&FileInfo.ftCreationTime, &sTime);
 	SystemTimeToTzSpecificLocalTime(NULL, &sTime, &lTime);
-	cout << "\nВремя создания файла: \n" << sTime.wDay << ".";
+	cout << "\nГ‚Г°ГҐГ¬Гї Г±Г®Г§Г¤Г Г­ГЁГї ГґГ Г©Г«Г : \n" << sTime.wDay << ".";
 	cout << lTime.wMonth << "." << lTime.wYear << " " << lTime.wHour << ":" << lTime.wMinute << "\n";
 	FileTimeToSystemTime(&(FileInfo.ftLastWriteTime), &sTime);
 	SystemTimeToTzSpecificLocalTimeEx(NULL, &sTime, &lTime);
-	cout << "Время последней записи в файл: \n" << lTime.wDay << ".";
+	cout << "Г‚Г°ГҐГ¬Гї ГЇГ®Г±Г«ГҐГ¤Г­ГҐГ© Г§Г ГЇГЁГ±ГЁ Гў ГґГ Г©Г«: \n" << lTime.wDay << ".";
 	cout << lTime.wMonth << "." << lTime.wYear << " " << lTime.wHour << ":" << lTime.wMinute << "\n";
-	cout << "Порядковый номер тома, содержащего файл: " << FileInfo.dwVolumeSerialNumber << "\n";
-	cout << "Старшая часть размера файла: " << FileInfo.nFileSizeHigh << "\n";
-	cout << "Младшая часть размера файла: " << FileInfo.nFileSizeLow << "\n";
-	cout << "Число связей с этим файлом: " << FileInfo.nNumberOfLinks << "\n";
-	cout << "Старшая часть уникального идентификатора связи с файлом: " << FileInfo.nFileIndexHigh << "\n";
-	cout << "Младшая часть уникального идентификатора связи с файлом: " << FileInfo.nFileIndexLow << "\n";
+	cout << "ГЏГ®Г°ГїГ¤ГЄГ®ГўГ»Г© Г­Г®Г¬ГҐГ° ГІГ®Г¬Г , Г±Г®Г¤ГҐГ°Г¦Г Г№ГҐГЈГ® ГґГ Г©Г«: " << FileInfo.dwVolumeSerialNumber << "\n";
+	cout << "Г‘ГІГ Г°ГёГ Гї Г·Г Г±ГІГј Г°Г Г§Г¬ГҐГ°Г  ГґГ Г©Г«Г : " << FileInfo.nFileSizeHigh << "\n";
+	cout << "ГЊГ«Г Г¤ГёГ Гї Г·Г Г±ГІГј Г°Г Г§Г¬ГҐГ°Г  ГґГ Г©Г«Г : " << FileInfo.nFileSizeLow << "\n";
+	cout << "Г—ГЁГ±Г«Г® Г±ГўГїГ§ГҐГ© Г± ГЅГІГЁГ¬ ГґГ Г©Г«Г®Г¬: " << FileInfo.nNumberOfLinks << "\n";
+	cout << "Г‘ГІГ Г°ГёГ Гї Г·Г Г±ГІГј ГіГ­ГЁГЄГ Г«ГјГ­Г®ГЈГ® ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г°Г  Г±ГўГїГ§ГЁ Г± ГґГ Г©Г«Г®Г¬: " << FileInfo.nFileIndexHigh << "\n";
+	cout << "ГЊГ«Г Г¤ГёГ Гї Г·Г Г±ГІГј ГіГ­ГЁГЄГ Г«ГјГ­Г®ГЈГ® ГЁГ¤ГҐГ­ГІГЁГґГЁГЄГ ГІГ®Г°Г  Г±ГўГїГ§ГЁ Г± ГґГ Г©Г«Г®Г¬: " << FileInfo.nFileIndexLow << "\n";
 	CloseHandle(fHandle);
 };
 
@@ -494,67 +494,67 @@ void modifyDate() {
 	FILETIME fTimeCr, fTimeAc, fTimeWr;
 	SYSTEMTIME sTimeCr = {}, sTimeAc = {}, sTimeWr = {}, UTimeCr = {}, UTimeAc = {}, UTimeWr = {};
 	string path;
-	cout << "Введите путь к файлу дату и время которого хотите изменить: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі Г¤Г ГІГі ГЁ ГўГ°ГҐГ¬Гї ГЄГ®ГІГ®Г°Г®ГЈГ® ГµГ®ГІГЁГІГҐ ГЁГ§Г¬ГҐГ­ГЁГІГј: ";
 	path = validPath();
 	fHandle = CreateFileA(path.c_str(), GENERIC_READ | GENERIC_WRITE, 0, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 	WORD Year, Month, Day, Hour, Minute;
-	cout << "Введите время создания файла.\n";
-	cout << "\nВведите год: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГ°ГҐГ¬Гї Г±Г®Г§Г¤Г Г­ГЁГї ГґГ Г©Г«Г .\n";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЈГ®Г¤: ";
 	cin >> Year;
 	sTimeCr.wYear = Year;
-	cout << "\nВведите месяц: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬ГҐГ±ГїГ¶: ";
 	cin >> Month;
 	sTimeCr.wMonth = Month;
-	cout << "\nВведите день: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¤ГҐГ­Гј: ";
 	cin >> Day;
 	sTimeCr.wDay = Day;
-	cout << "\nВведите час: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г·Г Г±: ";
 	cin >> Hour;
 	sTimeCr.wHour = Hour;
-	cout << "\nВведите минуты: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬ГЁГ­ГіГІГ»: ";
 	cin >> Minute;
 	sTimeCr.wMinute = Minute;
 	GetTimeZoneInformation(&Tz);
 	TzSpecificLocalTimeToSystemTime(&Tz, &sTimeCr, &UTimeCr);
 	SystemTimeToFileTime(&UTimeCr, &fTimeCr);
-	cout << "\nВведите время чтения или записи в файл. ";
-	cout << "\nВведите год: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГўГ°ГҐГ¬Гї Г·ГІГҐГ­ГЁГї ГЁГ«ГЁ Г§Г ГЇГЁГ±ГЁ Гў ГґГ Г©Г«. ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЈГ®Г¤: ";
 	cin >> Year;
 	sTimeAc.wYear = Year;
-	cout << "\nВведите месяц: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬ГҐГ±ГїГ¶: ";
 	cin >> Month;
 	sTimeAc.wMonth = Month;
-	cout << "\nВведите день: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¤ГҐГ­Гј: ";
 	cin >> Day;
 	sTimeAc.wDay = Day;
-	cout << "\nВведите час: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г·Г Г±: ";
 	cin >> Hour;
 	sTimeAc.wHour = Hour;
-	cout << "\nВведите минуты: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬ГЁГ­ГіГІГ»: ";
 	cin >> Minute;
 	sTimeAc.wMinute = Minute;
 	TzSpecificLocalTimeToSystemTime(&Tz, &sTimeAc, &UTimeAc);
 	SystemTimeToFileTime(&UTimeAc, &fTimeAc);
-	cout << "Введите время записи в файл.";
-	cout << "\nВведите год: ";
+	cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГ°ГҐГ¬Гї Г§Г ГЇГЁГ±ГЁ Гў ГґГ Г©Г«.";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ ГЈГ®Г¤: ";
 	cin >> Year;
 	sTimeWr.wYear = Year;
-	cout << "\nВведите месяц: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬ГҐГ±ГїГ¶: ";
 	cin >> Month;
 	sTimeWr.wMonth = Month;
-	cout << "\nВведите день: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¤ГҐГ­Гј: ";
 	cin >> Day;
 	sTimeWr.wDay = Day;
-	cout << "\nВведите час \: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г·Г Г± \: ";
 	cin >> Hour;
 	sTimeWr.wHour = Hour;
-	cout << "\nВведите минуты: ";
+	cout << "\nГ‚ГўГҐГ¤ГЁГІГҐ Г¬ГЁГ­ГіГІГ»: ";
 	cin >> Minute;
 	sTimeWr.wMinute = Minute;
 	TzSpecificLocalTimeToSystemTime(&Tz, &sTimeWr, &UTimeWr);
 	SystemTimeToFileTime(&UTimeWr, &fTimeWr);
 	if (SetFileTime(fHandle, &fTimeCr, &fTimeAc, &fTimeWr))
-		cout << "\nДата и время успешно изменены!";
+		cout << "\nГ„Г ГІГ  ГЁ ГўГ°ГҐГ¬Гї ГіГ±ГЇГҐГёГ­Г® ГЁГ§Г¬ГҐГ­ГҐГ­Г»!";
 	CloseHandle(fHandle);
 };
 
@@ -567,13 +567,14 @@ string validPath()
 		error = 0;
 		path.clear();
 		cin >> path;
-		//при успешном завершении возвращаемое значение - атрибуты файла или каталога
+		//ГЇГ°ГЁ ГіГ±ГЇГҐГёГ­Г®Г¬ Г§Г ГўГҐГ°ГёГҐГ­ГЁГЁ ГўГ®Г§ГўГ°Г Г№Г ГҐГ¬Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ - Г ГІГ°ГЁГЎГіГІГ» ГґГ Г©Г«Г  ГЁГ«ГЁ ГЄГ ГІГ Г«Г®ГЈГ 
 		if (GetFileAttributesA(path.c_str()) == INVALID_FILE_ATTRIBUTES)
 			error = GetLastError();
 		if (error == 3 || error == 2) {
-			cout << "Не удалось найти файл или каталог по указанному пути.\n";
-			cout << "Введите путь ещё раз: ";
+			cout << "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г­Г Г©ГІГЁ ГґГ Г©Г« ГЁГ«ГЁ ГЄГ ГІГ Г«Г®ГЈ ГЇГ® ГіГЄГ Г§Г Г­Г­Г®Г¬Гі ГЇГіГІГЁ.\n";
+			cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГЇГіГІГј ГҐГ№Вё Г°Г Г§: ";
 		}
 	} while (error != 0);
 	return path;
+	
 }
